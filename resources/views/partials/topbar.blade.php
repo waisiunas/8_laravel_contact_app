@@ -15,7 +15,7 @@
                         <img src="https://ui-avatars.com/api/?name={{ Auth::user()->name }}" class="avatar img-fluid rounded me-1"
                             alt="{{ Auth::user()->name }}" />
                     @else
-                        <img src="{{ asset('template/img/photos/' . $user->picture) }}" alt= }}" class="avatar img-fluid rounded me-1"
+                        <img src="{{ asset('template/img/photos/' . Auth::user()->picture) }}" alt= }}" class="avatar img-fluid rounded me-1"
                             alt="{{ Auth::user()->name }}" />
                     @endif
 
