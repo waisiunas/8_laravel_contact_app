@@ -1,41 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layout.main')
 
-@include('partials.head')
+@section('title', 'Dashboard')
 
-<body>
-    <div class="wrapper">
-        @include('partials.sidebar')
+@section('content')
+    <main class="content">
+        <div class="container-fluid p-0">
 
-        <div class="main">
-            @include('partials.topbar')
+            <h1 class="h3 mb-3">Dashboard</h1>
 
-            <main class="content">
-                <div class="container-fluid p-0">
-
-                    <h1 class="h3 mb-3">Blank Page</h1>
-
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h5 class="card-title mb-0">Empty card</h5>
-                                </div>
-                                <div class="card-body">
-                                </div>
-                            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Empty card</h5>
+                        </div>
+                        <div class="card-body">
                         </div>
                     </div>
-
                 </div>
-            </main>
+            </div>
 
-            @include('partials.footer')
         </div>
-    </div>
-
-    <script src="{{ asset('template/js/app.js') }}"></script>
-
-</body>
-
-</html>
+    </main>
+@endsection
