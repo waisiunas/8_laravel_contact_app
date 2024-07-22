@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\user\CategoryController;
 use App\Http\Controllers\user\DashboardController;
 use App\Http\Controllers\user\ProfileController;
 use Illuminate\Auth\Middleware\Authenticate;
@@ -26,4 +27,8 @@ Route::controller(ProfileController::class)->group(function () {
     Route::patch('user/profile/details', 'details')->name('user.profile.details');
     Route::patch('user/profile/password', 'password')->name('user.profile.password');
     Route::patch('user/profile/picture', 'picture')->name('user.profile.picture');
+});
+
+Route::controller(CategoryController::class)->group(function () {
+    Route::get('user/categories', 'index')->name('user.categories');
 });
