@@ -107,7 +107,7 @@
                         </div>
                         <div class="card-body text-center">
                             @if ($user->picture)
-                                <img src="{{ asset('template/img/photos/' . $user->picture) }}" alt= }}"
+                                <img src="{{ asset('template/img/photos/' . $user->picture) }}" alt=}}"
                                     class="img-fluid rounded-circle mb-2" width="128" height="128" />
                             @else
                                 <img src="https://ui-avatars.com/api/?name={{ $user->name }}" alt="Placeholder picture"
@@ -115,7 +115,8 @@
                             @endif
 
                             <div>
-                                <form action="{{ route('user.profile.picture') }}" method="post" enctype="multipart/form-data">
+                                <form action="{{ route('user.profile.picture') }}" method="post"
+                                    enctype="multipart/form-data">
                                     @csrf
                                     @method('PATCH')
                                     <div class="mb-3">

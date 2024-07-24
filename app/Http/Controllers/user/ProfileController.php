@@ -18,9 +18,9 @@ class ProfileController extends Controller
         $this->authenticated_user = Auth::user();
     }
 
-    public function index()
+    public function show()
     {
-        return view('user.profile.index', [
+        return view('user.profile.show', [
             'user' => $this->authenticated_user,
         ]);
     }

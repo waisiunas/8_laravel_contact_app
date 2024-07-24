@@ -11,7 +11,7 @@
                     <h1 class="h3 mb-3">Categories</h1>
                 </div>
                 <div class="col-6 text-end">
-                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" onclick=""
+                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" onclick="clearAddModal()"
                         data-bs-target="#addModal">
                         Add Category
                     </button>
@@ -24,7 +24,7 @@
                         <div class="card-body">
                             <div id="alert"></div>
                             <div id="response">
-                                <table class="table table-bordered m-0">
+                                {{-- <table class="table table-bordered m-0">
                                     <thead>
                                         <tr>
                                             <th>Sr. No.</th>
@@ -52,7 +52,9 @@
                                             </td>
                                         </tr>
                                     </tbody>
-                                </table>
+                                </table> --}}
+
+                                {{-- <div class="alert alert-info m-0">No record found</div> --}}
                             </div>
                         </div>
                     </div>
@@ -65,7 +67,11 @@
     @include('partials.modals')
     <script>
         const ID = @json(Auth::id());
+        const showAllRoute = @json(route('api.user.categories', Auth::id()));
         const addRoute = @json(route('api.user.category.create'));
+        const showSingleRoute = @json(route('api.user.category.show', ':id'));
+        const updateRoute = @json(route('api.user.category.update', ':id'));
+        const destroyRoute = @json(route('api.user.category.destroy', ':id'));
     </script>
     <script src="{{ asset('template/js/custom.js') }}"></script>
 @endsection

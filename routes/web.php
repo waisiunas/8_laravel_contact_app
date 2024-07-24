@@ -18,17 +18,19 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('logout', 'logout')->name('logout');
 });
 
-Route::controller(DashboardController::class)->middleware(Authenticate::class)->group(function () {
-    Route::get('user/dashboard', 'index')->name('user.dashboard');
-});
+Route::middleware(Authenticate::class)->group(function () {
+    Route::controller(DashboardController::class)->group(function () {
+        Route::get('user/dashboard', 'index')->name('user.dashboard');
+    });
 
-Route::controller(ProfileController::class)->group(function () {
-    Route::get('user/profile', 'index')->name('user.profile');
-    Route::patch('user/profile/details', 'details')->name('user.profile.details');
-    Route::patch('user/profile/password', 'password')->name('user.profile.password');
-    Route::patch('user/profile/picture', 'picture')->name('user.profile.picture');
-});
+    Route::controller(ProfileController::class)->prefix('user/profile')->name('user.profile.')->group(function () {
+        Route::get('show', 'show')->name('show');
+        Route::patch('details', 'details')->name('details');
+        Route::patch('password', 'password')->name('password');
+        Route::patch('picture', 'picture')->name('picture');
+    });
 
-Route::controller(CategoryController::class)->group(function () {
-    Route::get('user/categories', 'index')->name('user.categories');
+    Route::controller(CategoryController::class)->group(function () {
+        Route::get('user/categories', 'index')->name('user.categories');
+    });
 });

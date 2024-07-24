@@ -12,17 +12,17 @@
 
                 <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
                     @if (empty(Auth::user()->picture))
-                        <img src="https://ui-avatars.com/api/?name={{ Auth::user()->name }}" class="avatar img-fluid rounded me-1"
-                            alt="{{ Auth::user()->name }}" />
+                        <img src="https://ui-avatars.com/api/?name={{ Auth::user()->name }}"
+                            class="avatar img-fluid rounded me-1" alt="{{ Auth::user()->name }}" />
                     @else
-                        <img src="{{ asset('template/img/photos/' . Auth::user()->picture) }}" alt= }}" class="avatar img-fluid rounded me-1"
-                            alt="{{ Auth::user()->name }}" />
+                        <img src="{{ asset('template/img/photos/' . Auth::user()->picture) }}" alt=}}"
+                            class="avatar img-fluid rounded me-1" alt="{{ Auth::user()->name }}" />
                     @endif
 
                     <span class="text-dark">{{ Auth::user()->name }}</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
-                    <a class="dropdown-item" href="{{ route('user.profile') }}">
+                    <a class="dropdown-item" href="{{ route('user.profile.show') }}">
                         <i class="align-middle me-1" data-feather="user"></i>
                         Profile
                     </a>
