@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\user\CategoryController;
+use App\Http\Controllers\user\ContactController;
 use App\Http\Controllers\user\DashboardController;
 use App\Http\Controllers\user\ProfileController;
 use Illuminate\Auth\Middleware\Authenticate;
@@ -32,5 +33,11 @@ Route::middleware(Authenticate::class)->group(function () {
 
     Route::controller(CategoryController::class)->group(function () {
         Route::get('user/categories', 'index')->name('user.categories');
+    });
+
+    Route::controller(ContactController::class)->group(function () {
+        Route::get('user/contacts', 'index')->name('user.contacts');
+        Route::get('user/contact/create', 'create')->name('user.contact.create');
+        Route::post('user/contact/create', 'store');
     });
 });
