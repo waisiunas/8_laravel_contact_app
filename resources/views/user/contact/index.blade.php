@@ -19,33 +19,38 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <table class="table table-bordered m-0">
-                                <thead>
-                                    <tr>
-                                        <th>Sr. No.</th>
-                                        <th>Name</th>
-                                        <th>Number</th>
-                                        <th>Email</th>
-                                        <th>Category</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
+                            @if (count($contacts) > 0)
+                                <table class="table table-bordered m-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Sr. No.</th>
+                                            <th>Name</th>
+                                            <th>Number</th>
+                                            <th>Email</th>
+                                            <th>Category</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
 
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Ali</td>
-                                        <td>4535456</td>
-                                        <td>ali@gmail.com</td>
-                                        <td>Friends</td>
-                                        <td>
-                                            <a href="" class="btn btn-primary">Show</a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
-                            <div class="alert alert-info m-0">No record found!</div>
+                                    <tbody>
+                                        @foreach ($contacts as $contact)
+                                            <tr>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $contact->first_name . ' ' . $contact->last_name }}</td>
+                                                <td>{{ $contact->mobile }}</td>
+                                                <td>{{ $contact->email ?? 'N/A' }}</td>
+                                                <td>{{ $contact->category->name }}</td>
+                                                <td>
+                                                    <a href="{{ route('user.contact.show', $contact) }}"
+                                                        class="btn btn-primary">Show</a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            @else
+                                <div class="alert alert-info m-0">No record found!</div>
+                            @endif
                         </div>
                     </div>
                 </div>

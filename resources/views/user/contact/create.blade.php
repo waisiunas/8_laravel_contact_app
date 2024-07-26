@@ -1,6 +1,6 @@
 @extends('layout.main')
 
-@section('title', 'Contacts')
+@section('title', 'Add Contact')
 
 @section('content')
     <main class="content">
@@ -8,10 +8,10 @@
 
             <div class="row">
                 <div class="col-6">
-                    <h1 class="h3 mb-3">Contacts</h1>
+                    <h1 class="h3 mb-3">Add Contact</h1>
                 </div>
                 <div class="col-6 text-end">
-                    <a href="{{ route('user.contact.create') }}" class="btn btn-outline-primary">Add Contact</a>
+                    <a href="{{ route('user.contacts') }}" class="btn btn-outline-primary">Back</a>
                 </div>
             </div>
 
@@ -20,7 +20,7 @@
                     <div class="card">
                         <div class="card-body">
                             @include('partials.alerts')
-                            <form action="{{ route('user.contact.create') }}" method="post">
+                            <form action="{{ route('user.contact.create') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-4">
@@ -55,7 +55,7 @@
                                                 id="category_id" name="category_id">
                                                 <option value="">Select a category</option>
                                                 @foreach ($categories as $category)
-                                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                    <option value="{{ $category->id }}" @selected(old('category_id') == $category->id)>{{ $category->name }}</option>
                                                 @endforeach
                                             </select>
 

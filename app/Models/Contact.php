@@ -20,5 +20,10 @@ class Contact extends Model
         'instagram',
         'youtube',
         'address',
+        'picture',
     ];
+
+    public function category() {
+        return $this->belongsTo(Category::class);
+    }
 }

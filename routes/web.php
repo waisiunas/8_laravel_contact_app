@@ -39,5 +39,9 @@ Route::middleware(Authenticate::class)->group(function () {
         Route::get('user/contacts', 'index')->name('user.contacts');
         Route::get('user/contact/create', 'create')->name('user.contact.create');
         Route::post('user/contact/create', 'store');
+        Route::get('user/contact/{contact}/show', 'show')->name('user.contact.show');
+        Route::get('user/contact/{contact}/edit', 'edit')->name('user.contact.edit');
+        Route::patch('user/contact/{contact}/edit', 'update');
+        Route::delete('user/contact/{contact}/destroy', 'destroy')->name('user.contact.destroy');
     });
 });
